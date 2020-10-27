@@ -1,6 +1,10 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 //Arrays: Variables
 var passwordLength = " ";
 var addLowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
@@ -8,9 +12,23 @@ var addUppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O",
 var addSymbols = ["!","@","#","$","%","^","&","*","(",")","_","+","=","{","}","|","]","[",":",";","'","?","/",".",">",",","<","`","~"];
 var addNumbers = ["1","2","3","4","5","6","7","8","9","0"];
 
+function writePassword(){
+  
+  //Adds password to input
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+
+      passwordText.value = password;
+}
+
+function generatePassword(){
+  
+  var confirmAddLowercase;
+  var confirmAddUppercase;
+  var confirmAddNumbers;
+  var confirmAddSymbols;
 
 //When you click "Generated Password" = this prompt appears
-function generatePassword() {
   //Password Length
   var passwordLength = (prompt("How many characters do you want your password to contain? (between 8-100 characters)"));
     if (passwordLength <= 6 || passwordLength >= 100) {
@@ -22,27 +40,18 @@ function generatePassword() {
 
 
 //Confirming arrays: Variables
-var confirmAddLowercase = confirm("If you would like to include lowercase characters? = click OKAY");
-var confirmAddUppercase = confirm("If you would like to include uppercase characters? = click OKAY");
-var confirmAddSymbols = confirm("If you would like to include symbol characters? = click OKAY");
-var confirmAddNumbers = confirm("If you would like to include numbers? = click OKAY");
+confirmAddLowercase = confirm("If you would like to include lowercase characters? = click OKAY");
+confirmAddUppercase = confirm("If you would like to include uppercase characters? = click OKAY");
+confirmAddSymbols = confirm("If you would like to include symbol characters? = click OKAY");
+confirmAddNumbers = confirm("If you would like to include numbers? = click OKAY");
 
-if (confirmAddLowercase) {
-  alert("Your password will contain lowercase characters");
-}
-if (confirmAddUppercase) {
-  alert("Your password will contain uppercase characters");
-}
-if (confirmAddSymbols) {
-  alert("Your password will contain symbols");
-}
-if (confirmAddNumbers) {
-  alert("Your password will contain numbers");
+//Alerting user to use 'click' okay 
+if (!confirmAddLowercase && !confirmAddUppercase && !confirmAddNumbers && !confirmAddSymbols) {
+  alert (" Password must contain at least ONE!")
 }
 
-
-
-var passwordParameter = []
+//Adding confirmed characteristics to password
+var passwordParameter = [ ];
 
 if (confirmAddLowercase) {
   passwordParameter = passwordParameter.concat(addLowercase);
@@ -51,28 +60,19 @@ if (confirmAddUppercase) {
   passwordParameter = passwordParameter.concat(addUppercase);
 }
 if (confirmAddSymbols) {
-  passwordParameter = passwordParameter.concat(confirmAddSymbols);
+  passwordParameter = passwordParameter.concat(addSymbols);
 }
 if (confirmAddNumbers) {
-  passwordParameter = passwordParameter.concat(confirmAddNumbers);
+  passwordParameter = passwordParameter.concat(addNumbers);
 }
 
 
-var randomPassword = ""
+var randomPassword = " ";
 
 for (var i = 0; i < passwordLength; i++) {
-  randomPassword = randomPassword + passwordParameter[Math.floor(Math.random() * passwordParameter.length)];}
+  randomPassword = randomPassword + passwordParameter[Math.floor(Math.random() * passwordParameter.length)];
+  console.log(randomPassword);
 }
 
-
-//Adds password to input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+  return randomPassword;
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
