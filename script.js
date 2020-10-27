@@ -66,6 +66,16 @@ if (confirmAddNumbers) {
   passwordParameter = passwordParameter.concat(addNumbers);
 }
 
+//WORK IN PROGRESS: Trying to confirm to user what characteristics they choose
+//var lowerCaseResponse = ("lowercase");
+//var upperCaseResponse = ("uppercase");
+//var symbolsResponse = ("symbols");
+//var numbersResponse = ("numbers");
+
+//if (confirmAddNumbers || confirmAddUppercase || confirmAddSymbols || confirmAddNumbers) {
+//  alert("password will include" [+ lowerCaseResponse + upperCaseResponse +symbolsResponse + numbersResponse]);
+//}
+
 
 var randomPassword = " ";
 
