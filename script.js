@@ -30,9 +30,9 @@ function generatePassword(){
 
 //When you click "Generated Password" = this prompt appears
   //Password Length
-  var passwordLength = (prompt("How many characters do you want your password to contain? (between 8-100 characters)"));
-    if (passwordLength <= 6 || passwordLength >= 100) {
-      alert ("Password must be between 8 and 100 characters!!"); 
+  var passwordLength = (prompt("How many characters do you want your password to contain? (between 7-128 characters)"));
+    if (passwordLength <= 7 || passwordLength >= 128) {
+      alert ("Password must be between 7 and 128 characters!!"); 
       return;
     }
     //Confirming password length
